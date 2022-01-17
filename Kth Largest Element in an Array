@@ -11,8 +11,18 @@ class Solution {
 //                 }
 //             }
 //         }
-        
 //         return p.peek();
+
+//        PriorityQueue<Integer> p=new PriorityQueue<>();
+//        for(int i:nums){
+//            if(p.size()<k || p.peek()<i){
+//                if(k==p.size())
+//                    p.remove();
+//                p.add(i);
+//            }
+//        }
+//        return p.peek();}
+        
         Arrays.sort(nums);
         return nums[nums.length-k];
         
