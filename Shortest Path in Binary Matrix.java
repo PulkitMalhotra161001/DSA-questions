@@ -35,8 +35,11 @@ class Solution {
                 int new_x=x+moves[i][0];
                 int new_y=y+moves[i][1];
                 if(new_x>=0 && new_x<n && new_y>=0 && new_y<n && grid[new_x][new_y]==0){
-                // make queue to add adjacent indices & steps taken
-                // from current so we can make move/step from adjacents
+                    if(new_x==m-1 && new_y==n-1){
+                        return curr.steps+1;
+                    }
+                    // make queue to add adjacent indices & steps taken
+                    // from current so we can make move/step from adjacents
                     q.add(new path(new_x,new_y,temp.steps+1));
                     // take one step from current adjacent and save steps taken
                     grid[new_x][new_y]=1;
