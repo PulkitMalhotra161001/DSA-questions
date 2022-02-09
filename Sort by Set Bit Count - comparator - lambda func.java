@@ -6,5 +6,7 @@ class Compute
         //comparator function compare
         //decending order
         Arrays.sort(arr, (x,y)->Integer.compare(Integer.bitCount(y), Integer.bitCount(x)));
+        ____________________________________________________________________________________
+        Arrays.sort(arr,Comparator.comparing(a->-Integer.bitCount(a)));
     }
 }
