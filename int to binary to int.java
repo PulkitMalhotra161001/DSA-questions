@@ -8,3 +8,6 @@ System.out.println(x);
 //binary search
 int id = Collections.binarySearch(a,b);
 return id<0?-id-1:id;
+
+//numbers of digits in int
+System.out.println((int)Math.log10(324512)+1);
