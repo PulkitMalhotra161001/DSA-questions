@@ -29,3 +29,29 @@ int swapBits(int x, int p1, int p2, int n)
         int ans=x^c;
         return ans;
     }
+
+____________________________________________________________________________________________________________________________________________
+
+// This function swaps bit at
+// positions p1 and p2 in an integer n
+static int swapBits( int n, int p1, int p2)
+{
+    /* Move p1'th to rightmost side */
+    int bit1 = (n >> p1) & 1;
+ 
+    /* Move p2'th to rightmost side */
+    int bit2 = (n >> p2) & 1;
+ 
+    /* XOR the two bits */
+    int x = (bit1 ^ bit2);
+ 
+    /* Put the xor bit back to
+    their original positions */
+    x = (x << p1) | (x << p2);
+ 
+    /* XOR 'x' with the original
+    number so that the
+    two sets are swapped */
+    int result = n ^ x;
+    return result;
+}
