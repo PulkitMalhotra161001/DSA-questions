@@ -1,3 +1,5 @@
+// https://www.youtube.com/watch?v=VrqBX-Tck2A
+
 //eulerian graph it have 2 things
 //eulerian path and eulerian circuit
 //(eulerian circuit is having eulerian path as well)
