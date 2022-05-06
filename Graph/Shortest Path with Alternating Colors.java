@@ -1,3 +1,4 @@
+//BFS
 class Solution {
     public int[] shortestAlternatingPaths(int n, int[][] redEdges, int[][] blueEdges) {
         Set<Integer>[][] rl=new HashSet[2][n];
