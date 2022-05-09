@@ -4,6 +4,10 @@
 // u comes before v for all edges
 // there can be many possible answers
 
+// it is only possible for Directed Acyclic Graph (DAG)
+// if there is undirected then how comes u before v
+// if there is cycle then there will be no solution e.g. 1->2, 2->3, 3->1
+
 class Solution
 {
     static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) {
