@@ -59,3 +59,7 @@ class Solution
         // so this postfix approach will also not work
     }
 }
+
+
+// eg. 1->0, 2->0, 3->0
+// ans[] = 3 2 1 0
