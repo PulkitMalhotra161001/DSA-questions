@@ -1,7 +1,12 @@
-//valued stored liked
-    // index=0  [[1,1],[2,6]]
-    // index=1  [[0,1],[2,3]]
-    // index=2  [[0,6],[1,3]]
+
+class Solution
+{
+    // we have to find "yaha/is node tak pauchne me kitna distance/wgt lagega"
+    
+    // valued stored liked
+    // index=0  [[1,1],[2,6]] 0->1 wgt=1, 0->2 wgt=6
+    // index=1  [[0,1],[2,3]] 1->0 wgt=1, 1->2 wgt=3
+    // index=2  [[0,6],[1,3]] 2->0 wgt=6, 2->1 wgt=3
     
     //[[[1,1],[2,6]],[[0,1],[2,3]],[[0,6],[1,3]]]
         
@@ -22,25 +27,21 @@
         
         while(!pq.isEmpty()){
             //getting minimum vertice from queue
-            int temp=pq.remove();
+            int pop=pq.remove();
             
             //get all joined adjacents (vertice,distance)
-            ArrayList<ArrayList<Integer>> joined_vertices=adj.get(temp);
-            for(int i=0;i<joined_vertices.size();i++){
-                
-                //get joined vertice value
-                int adjacent_vertice=joined_vertices.get(i).get(0);
-                //get joined vertice distance
-                int adjacent_node_dist=joined_vertices.get(i).get(1)+ans[temp];
-                //if we getting smaller distance from travelled vertice the update
-                
-                if(ans[adjacent_vertice]>adjacent_node_dist){
-                    ans[adjacent_vertice]=adjacent_node_dist;
-                    pq.add(adjacent_vertice);
-                } 
+            for(ArrayList<Integer> nbr_edge : adj.get(pop)){
+                int vtx = nbr_edge.get(0);
+                int dist = nbr_edge.get(1)/*wgt*/ + ans[pop];
+                if(ans[vtx]>dist){
+                    ans[vtx]=dist;
+                    pq.add(vtx);
+                }
             }
         }
-        
-        
         return ans;
     }
+}
+
+//this will not work for -ve edge
+//for that we have Bellman–Ford Algorithm
