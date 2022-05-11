@@ -6,6 +6,7 @@
 //pq gave us minimum wgt node
 //go to that node and repeat the process
 //until all nodes becomes visited
+//we have to take shortest weighted edge
 
 class Solution
 {
