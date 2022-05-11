@@ -53,10 +53,11 @@ ________________________________________________________________________________
 //since we need to take the node only one time
 //so we can save it into an array
 
-// https://leetcode.com/problems/min-cost-to-connect-all-points/
-class Solution {
-    public int minCostConnectPoints(int[][] points) {
-        int n=points.length;
+class Solution
+{
+    //Function to find sum of weights of edges of the Minimum Spanning Tree.
+    static int spanningTree(int n, ArrayList<ArrayList<ArrayList<Integer>>> adj) 
+    {
         boolean vis[]=new boolean[n];
         int ans[]=new int[n];
         Arrays.fill(ans,Integer.MAX_VALUE);
@@ -75,11 +76,9 @@ class Solution {
             vis[node]=true;
             total++;
             res+=min;
-            for(int i=0;i<n;i++){
-                if(!vis[i]){
-                    int wgt = Math.abs(points[i][0]-points[node][0]) +
-                              Math.abs(points[i][1]-points[node][1]);
-                    ans[i]=Math.min(ans[i],wgt);
+            for(ArrayList<Integer> i:adj.get(node)){
+                if(!vis[i.get(0)]){
+                    ans[i.get(0)]=Math.min(i.get(1),ans[i.get(0)]);
                 }
             }
         }
