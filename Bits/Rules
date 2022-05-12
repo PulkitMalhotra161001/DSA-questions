@@ -1,0 +1,9 @@
+(a^b) = (a|b) - (a&b)
+(a|b) + (a&b) = a+b
+(a^b) = (a+b) - (a&b)*2
+
+(a|b) + (a&b) + (a^b) = b + x    /*assume*/
+(a+b)         + (a^b) = b + x
+(a^b) = x-a
+(a^b)^a = (x-a)^a
+b = (x-a)^a
