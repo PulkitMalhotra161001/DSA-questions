@@ -45,3 +45,14 @@ class Solution
         return al;
     }
 }
+
+
+// Top View
+line 30 ->
+
+if(!map.containsKey(dist))
+    map.put(dist,node.data);
+
+// as we are going down (level order)
+// in top view element must be in top of all the elements
+// conclude: if horizontal distance position is already visited then containing value is top view value
