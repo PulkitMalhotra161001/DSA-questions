@@ -1,7 +1,7 @@
 // Bellman Ford algorithm will work in
-// Directed Graph if there is a +ve edge or if there is a -ve edge
-// UnDirected Graph it has to convert it into directed graph using bidirectional edges 
-// It will not work if there is a -ve cycle. But it will detect you a -ve cycle.
+// Directed Graph and UnDirected Graph if there is a +ve edge
+// for -ve edge if there is a +ve cycle.
+// but for -ve cycle this algo not work. But it will detect you a -ve cycle.
 
 // Negative weight cycle
 // GFG
