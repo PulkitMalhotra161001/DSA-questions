@@ -54,6 +54,14 @@ ________________________________________________________________________________
 //since we need to take the node only one time
 //so we can save it into an array
 
+// In this approach, we use one minDistminDist array, where minDist[i] stores the weight of the smallest weighted edge to reach the ith 
+// node from any node in the current tree. We will iterate over the minDist array and greedily pick the node that is not in the MST and has the smallest edge weight.
+// We will add this node to the MST, and for all of its neighbors, we will try to update the value in minDist.
+// We will repeat this process until all nodes are part of the MST.
+
+// Initially, we can start with any node, say node 00. Thus we markminDist[0] = 0, and for the remaining nodes, the min distance to reach them is ∞.
+// Just like in the previous approach, we assume a 0 weighted temporary edge is used to reach the first node.
+
 class Solution
 {
     //Function to find sum of weights of edges of the Minimum Spanning Tree.
@@ -86,3 +94,5 @@ class Solution
         return res;
     }
 }
+
+// https://leetcode.com/problems/min-cost-to-connect-all-points/solution/
