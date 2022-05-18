@@ -1,3 +1,8 @@
+// https://leetcode.com/problems/critical-connections-in-a-network/
+
+//Cut Edge means if we remove an edge it break down the graph into 2 or more component
+//Return the edges
+
 class Solution {
     //for maintaing the lowest possible value to connect
     int low[];
