@@ -1,3 +1,5 @@
+// https://practice.geeksforgeeks.org/problems/hamiltonian-path2522/1#
+
 // Hamiltonian Path - start from a vertex and visit all vertices without visiting the vertex more than one time.
 
 // Hamiltonian Cycle - start from a vertex, visit all vertices, visit only one time, there must be a direct edge between last vertex and starting vertex.
