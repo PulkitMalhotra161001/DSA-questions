@@ -78,3 +78,6 @@ class Solution
     }
     
 }
+
+// Time Complexity => O( V + E)  -   DFS
+// Space Complexity => O( V + E)  -   Transpose
