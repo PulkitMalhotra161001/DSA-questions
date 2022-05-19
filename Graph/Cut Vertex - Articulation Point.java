@@ -13,6 +13,8 @@ class Solution
     int low[];
     
     //keep tracks if a vertex is visited previously or not
+    //we have another option also we can Arrays.fill(time,-1) or Arrays.fill(low,-1)
+    //so that node is not visited since we can use time[] as visited/unvisited so we didn't need to create another array
     boolean vis[];
     
     //if we directly fill elements in a list then 
