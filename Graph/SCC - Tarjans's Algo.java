@@ -88,6 +88,7 @@ class Solution{
                     
                     //back-edge
                     //disc[nbr] bcz there can be other childs also, so the low[nbr] gets updated
+                    //low[nbr] also work
                     low[src]=Math.min(low[src],disc[nbr]);
                 }
                 
