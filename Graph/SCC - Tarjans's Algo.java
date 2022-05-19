@@ -87,6 +87,7 @@ class Solution{
                 if(stack_member[nbr]){
                     
                     //back-edge
+                    //disc[nbr] bcz there can be other childs also, so the low[nbr] gets updated
                     low[src]=Math.min(low[src],disc[nbr]);
                 }
                 
