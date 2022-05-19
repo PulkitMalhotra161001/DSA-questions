@@ -1,5 +1,6 @@
 /*Kosaraju Algorithm
 Strongly connected components in a graph
+How many SCC's +nst in a graph
 
 Concept -
 Strongly connected means when take a node, now can we reach to all other vertices from that
