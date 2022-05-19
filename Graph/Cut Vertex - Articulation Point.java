@@ -1,5 +1,7 @@
 // https://practice.geeksforgeeks.org/problems/articulation-point2616/1/#
 
+// Prerequisite =>  Cut Edge - Bridges
+
 //is_Articulation_point means if this vertex is removed from graph
 //It disconnects the graph into 2 or more components, or in other words, 
 //removing vertex will increase the number of connected components.
