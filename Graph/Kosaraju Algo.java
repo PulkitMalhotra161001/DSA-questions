@@ -42,7 +42,7 @@ class Solution
         }
         
         // Step 3 : again dfs but take vertex from stack (if unvisited)
-        // means we traversed to all it's SCC ( st.pop() )
+        // If st.pop() is visited means we have traversed to all it's SCC
         // do this for all vertcies ( bcz stack store all vertices )
         
         // System.out.println(rev);
