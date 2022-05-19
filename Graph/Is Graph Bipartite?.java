@@ -130,7 +130,7 @@ class Solution {
             if(dp[nbr]==-1){
                 
                 //color it differntly and do traversal
-                dp[nbr]=1-color;
+                dp[nbr]=1-color;    // this statements is not essentail we we are filling while traversing
                 
                 //if we can't color it further then we just return
                 if(!dfs(graph,dp,nbr,1-color)){
