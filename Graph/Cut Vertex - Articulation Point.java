@@ -114,7 +114,9 @@ class Solution
                 }
             }else{
                 
-                //already visited vertex  take the lower value
+                //already visited vertex - take the lower value from the discovery value of nbr
+                //lower of nbr not bcz there can be many childs
+                //in this problem LOW[nbr] also work but for time[nbr] explanation i explained in SCC - Tarjan's Algo
                 low[node]=Math.min(low[node],time[nbr]);
             }
         }
