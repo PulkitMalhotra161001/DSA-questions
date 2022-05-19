@@ -69,5 +69,12 @@ class Solution
     }
 }
 
-// Time Complexity => O( V + E)  -   DFS
-// Space Complexity => O( V + E)  -   Transpose
+/*Limitations :-
+it do 2 dfs
+it doesn't tell what are those components
+
+    =>  For that we have Tarjans's Algo
+
+Time Complexity => O( V + E)  -   DFS
+Space Complexity => O( V + E)  -   Transpose
+*/
