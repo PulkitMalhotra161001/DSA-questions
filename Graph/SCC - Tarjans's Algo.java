@@ -37,6 +37,7 @@ class Solution{
         
         //do dfs for every vertex
         for(int i=0;i<V;i++){
+            //unvisited then traverse
             if(disc[i]==-1){
                 dfs(adj,i);
             }
