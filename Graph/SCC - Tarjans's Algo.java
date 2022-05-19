@@ -1,6 +1,7 @@
 // Prerequisite =>  Cut Edge - Bridges, Cut Vertex - Articulation Point
 
 //it can tell how many SCC in a graph and what are those
+// https://youtu.be/ZeDNSeilf-Y
 
 class Solution{
     
@@ -88,7 +89,6 @@ class Solution{
                     
                     //back-edge
                     //disc[nbr] bcz there can be other childs also, so the low[nbr] gets updated
-                    //low[nbr] also work
                     low[src]=Math.min(low[src],disc[nbr]);
                 }
                 
