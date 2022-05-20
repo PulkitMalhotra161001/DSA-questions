@@ -1,6 +1,9 @@
 //Aim  - We have to find the shortest path from every pair of vertex
+//It can also detect -ve weightest cycle
 
 //vertex to itself smallest distance is 0
+
+//if after appling the shortest path (vertex to iteself shortest distance is -ve) means there is a -ve cycle
 
 class Solution{
     public void shortest_distance(int[][] matrix){
@@ -31,3 +34,6 @@ class Solution{
         }
     }
 }
+
+___________________________________________________________________________________________________________________________________________________________
+
