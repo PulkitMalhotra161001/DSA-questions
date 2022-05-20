@@ -1,1 +1,1 @@
-<p>Math and Number Theory</p>
+<code>Math and Number Theory</code>
