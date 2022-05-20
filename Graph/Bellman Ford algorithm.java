@@ -36,6 +36,8 @@ public int isNegativeWeightCycle(int n, int[][] edges){
             }
         }
     }
+    
+    //At this point dist array store the shortest path from source to all it's vertices
 
     // After relaxing one more time if distance reduces it means it have an -ve cycle
     
