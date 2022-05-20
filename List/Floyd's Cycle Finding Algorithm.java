@@ -10,3 +10,20 @@ public static boolean detectLoop(Node head){
     }
     return fast==slow && fast.data==slow.data;
 }
+
+_____________________________________________________________________________________________________________________________________________________________
+//Another good approach
+//1 ≤ Data on Node ≤ 103
+
+public static boolean detectLoop(Node head){
+    
+    //null and not marked
+    while (head != null && head.data != -1){
+        //mark
+        head.data = -1;
+        head = head.next;
+    }
+    
+    //if head is null means no cycle
+    return head!=null;
+}
