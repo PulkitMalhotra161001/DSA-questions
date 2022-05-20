@@ -37,3 +37,52 @@ class Solution{
 
 ___________________________________________________________________________________________________________________________________________________________
 
+class Solution
+{
+    public int isNegativeWeightCycle(int n, int[][] edges){
+        
+        int dp[][]=new int[n][n];
+        
+        //fill there is no path till now
+        for(int i[]:dp){
+            Arrays.fill(i,-1);
+        }
+        
+        //vertex to itself is 0
+        for(int i=0;i<n;i++){
+            dp[i][i]=0;
+        }
+        
+        //traverse in edges and fill the weight in a 
+        for(int i[]:edges){
+            dp[i[0]][i[1]]=i[2];
+        }
+        
+        //traverse via k
+        for(int k=0;k<n;k++){
+            for(int i=0;i<n;i++){
+                for(int j=0;j<n;j++){
+                    
+                    //if value is itself then there is no path
+                    //if there is no path further
+                    if(i==k || j==k || dp[i][k]==-1 || dp[k][j]==-1)    continue;
+                    
+                    //as there is no path so there are -1 but we have to find minimum value
+                    //so we stored max in here
+                    else if(dp[i][j]==-1)   dp[i][j] = Integer.MAX_VALUE;
+                    dp[i][j] = Math.min(dp[i][j], dp[i][k] + dp[k][j]);
+                }
+            }
+        }
+        
+        //if vertex to itself is not 
+        for(int i=0;i<n;i++){
+            if(dp[i][i]!=0){
+                //there is -ve cycle
+                return 1;
+            }
+        }
+        
+        return 0;
+    }
+}
