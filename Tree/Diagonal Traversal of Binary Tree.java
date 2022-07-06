@@ -28,3 +28,33 @@ class Tree
         fill(map,root.right,level);
     }
 }
+
+______________________________________________________________________________________________________________________________________________________________
+//approach 2
+
+public ArrayList<Integer> diagonal(Node root)
+    {
+        
+        Queue<Node> q=new LinkedList<>();
+        ArrayList<Integer> ans = new ArrayList<>();
+        
+        q.add(root);
+        
+        while(!q.isEmpty()){
+            
+            Node temp=q.remove();
+            
+            while(temp!=null){
+                ans.add(temp.data);
+                if(temp.left!=null){
+                    q.add(temp.left);
+                }
+                
+                temp=temp.right;
+            }
+            
+        }
+
+        return ans;
+        
+    }
