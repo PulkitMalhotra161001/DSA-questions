@@ -33,3 +33,37 @@ int maxLength(String S){
 }
 
 // T.C = O(|S|²)
+
+______________________________________________________________________________________________________________________________________________________________
+
+int maxLength(String S){
+    int n=S.length();
+    Vector<Character> v=new Vector<>();
+    v.add(S.charAt(0));
+    for(int i=1;i<n;i++){
+        char c=S.charAt(i);
+        if(c>v.lastElement())
+            //no is larger we can insert
+            v.add(c);
+        else{
+            //find no. biggest value in vector and put char
+            v.set(find_ceil(v,c) ,c);
+        }
+    }
+    //vector is not the resultant subseq, it is just the result
+    return v.size();
+}
+int find_ceil(Vector<Character> v,char x){
+    int l=0, r=v.size()-1;
+    while(l<r){
+        int mid=l+(r-l)/2;
+        if(v.get(mid)>=x){
+            r=mid;
+        }else{
+            l=mid+1;
+        }
+    }
+    return l;
+}
+
+//T.C. = O(n*logn)
