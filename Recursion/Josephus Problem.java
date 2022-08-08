@@ -5,6 +5,9 @@ class Solution {
 /*      for ans we have to take the 0th value as 1 and 1th as 2 and so on..
         for that we incremented the index value*/
         return solve(n,k)+1;
+        
+//         return n==1?1:(josephus(n-1,k)+(k-1))%n +1;
+        
     }
     public int solve(int n,int k){
 /*      if length is 1 (minimum value) then the winner is 0th index
