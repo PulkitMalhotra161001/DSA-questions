@@ -8,7 +8,7 @@ class Solution
         
         //for capacity 0 or non elements we have nothing to put or no capacity so 0
         
-        //traverse
+        //traverse 
         for(int i=1;i<=n;i++){
             //j is our current capacity
             for(int j=1;j<=W;j++){
