@@ -31,7 +31,7 @@ class Solution {
         return ans;
     }
     public void preorder(Huffman root,ArrayList<String> ans,String till_now){
-        if(root==null){
+        if(root==null){ 
             return;
         }
         if(Character.isLetter(root.c))
