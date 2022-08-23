@@ -13,3 +13,7 @@ static Long[] lcmAndGcd(Long A , Long B) {
         }
         return B;
     }
+static int gcd(int a, int b) {
+        if (a == 0) return b;
+        return gcd(b % a, a);
+    }
