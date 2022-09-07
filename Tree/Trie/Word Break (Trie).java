@@ -7,12 +7,12 @@ class Solution
     {
         Node tree=new Node();
         for(String i:B){
-            // System.out.println(i);
             tree.add(tree,i);
         }
-        return tree.solve(tree,A)?1:0;
+        return tree.search(tree,tree,A)?1:0;
     }
 }
+
 class Node{
     Node child[];
     boolean end;
@@ -23,7 +23,8 @@ class Node{
         }
         end=false;
     }
-        
+    
+    
     void add(Node cur,String s){
         
         //string is added
@@ -43,33 +44,23 @@ class Node{
         add(cur.child[index],s.substring(1));
         
     }
+    
     boolean search(Node cur,Node root,String s){
-        if(s.length()==0){
-            // System.out.println("Hi");
-            return cur.end;
-        }
+        
+        //searching is completed (value's found)
+        //check wheather a word end with this (or maybe we have bigger length string)
+        if(s.length()==0)   return cur.end;
+        
         int index=s.charAt(0)-'a';
         
+        //not present
         if(cur.child[index]==null)
             return false;
         
+        //next node location
         Node next=cur.child[index];
-        return search(next,root,s.substring(1));
-    }
-    boolean solve(Node root, String s){
-        int n=s.length();
-        if(n==0)return true;
         
-        // Try all prefixes of lengths from 1 to size
-        for(int i=1;i<=n;i++){
-            
-            // prefix (of input string) of
-            // length 'i'. We first check whether
-            // current prefix is in dictionary.
-            // Then we recursively check for remaining
-            if ( search(root,root, s.substring(0, i)) && solve(root,s.substring(i)) )
-                return true;
-        }
-        return false;
+        //continue with this path || if there's a substring end at i check remaining string from root also
+        return search(next,root,s.substring(1)) || (next.end?search(root,root,s.substring(1)):false);
     }
 }
