@@ -2,46 +2,41 @@
 
 ArrayList<Integer> search(String pat, String S)
     {
-        int total=26, mod=101;
+        int mod=1_000_000;
         ArrayList<Integer> list=new ArrayList<>();
-        int p=0, s=0, sn=S.length(), pn=pat.length();
+        int p_code=0, s_code=0, sn=S.length(), pn=pat.length();
         
         // calculate most significant position
         // (we will need this when we have to remove most signicant position value)
         // The value of h would be "pow(d, M-1)%q"
-        int h = 1; 
+        int till_b = 1; 
         for (int i = 0; i < pn-1; i++)
-            h = (h*total)%mod;
+            till_b = (till_b*26)%mod;
         
         // System.out.println(h);
 
         for(int i=0;i<pn;i++){
             
             // pattern string hash
-            p = ( p*total + pat.charAt(i) ) % mod;
+            p_code = ( p_code*26 + pat.charAt(i) ) % mod;
             
             // first window hash
-            s = ( s*total + S.charAt(i) ) % mod;
+            s_code = ( s_code*26 + S.charAt(i) ) % mod;
         }
         
-        for(int i=0;i<=sn-pn;i++){
+        for(int i=pn;i<=sn;i++){
         
             // hash are equal
-            if(p==s && compare(pat,S,i))    list.add(i+1);
+            if( p_code==s_code && S.substring(i-pn,i).equals(pat) )    list.add(i-pn+1);
             
             // rolling hash
-            // remove a value from most significant position & 
+            // remove a value from most significant position
+            s_code=(s_code-S.charAt(i-pn)*till_b)%mod;
             // add new value to the least significant position
-            if(i+pn<sn)     s=( (s-S.charAt(i)*h)*total + S.charAt(i+pn))%mod;
-            if(s<0)     s+=mod;
+            if(i<sn)     s_code=( s_code*26 + S.charAt(i))%mod;
+            if(s_code<0)     s_code+=mod;
         }
         
         if(list.isEmpty())  list.add(-1);
         return list;
-    }
-    
-    boolean compare(String p,String s,int st){
-        for(int i=0;i<p.length();i++)
-            if(p.charAt(i)!=s.charAt(i+st)) return false;
-        return true;
     }
