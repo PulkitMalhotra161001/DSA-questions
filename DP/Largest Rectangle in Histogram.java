@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/largest-rectangle-in-histogram/
+
 class Solution {
     //eg. 2,1,5,6,2,3
     public int largestRectangleArea(int[] h) {
@@ -62,5 +64,44 @@ class Solution {
             rss.push(i);
         }
         return rs;
+    }
+}
+
+_______________________________________________________________________________________________________________________________________________________________
+// one pass approach
+
+class Solution {
+    public int largestRectangleArea(int[] heights) {
+        
+        int n = heights.length;
+        int max = 0;
+        
+        // monotonic stack => incr/decr order values
+        // in this case increasing order values
+        Stack<Integer> st=new Stack<>();
+        
+        for(int i=0;i<=n;i++){
+            
+            // one !st.isEmpty() loop is also required for
+            // i==n for last values if all's are increasing
+            // then this loop also run to find max
+            while(!st.isEmpty() && ( i==n || heights[st.peek()]>=heights[i]) ){
+                
+                int h = heights[st.pop()];
+                int w = 0;
+                
+                if(st.isEmpty())    w = i ;
+                else    w = i - st.peek() - 1 ;
+                
+                max = Math.max( max, h*w );
+                
+            }
+            
+            st.push(i);
+            
+        }
+        
+        return max;
+        
     }
 }
