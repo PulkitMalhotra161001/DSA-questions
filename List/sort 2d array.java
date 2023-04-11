@@ -15,3 +15,8 @@ public class Main {
         System.out.println();
     }
 }
+
+int arr[][]={{a,1},{b,2},{c,3}};
+        
+//o1 => {a,1}   &   o2 => {b,2} 
+Arrays.sort(arr,(o1,o2)->o1[0]-o2[0]);
