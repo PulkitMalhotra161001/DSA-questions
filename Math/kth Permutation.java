@@ -38,8 +38,8 @@ class Solution {
         ans+=s.remove(start_with);
         
         //inside the bucket we have n-1 numbers and n-1! cases
-        //now we need to find the index inside the bucket (bucket have n-1! permutations)
-        //fac=n-1!
+        //now we need to find the index inside the bucket (bucket have (n-1)! permutations)
+        //fac=(n-1)!
         solve(s, n-1, fac, k%fac);
     }
 }
