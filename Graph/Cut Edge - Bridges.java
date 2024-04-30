@@ -50,23 +50,23 @@ class Solution {
         //traverse it's neighbours
         for(Integer nbr:adj.get(node)){
             
-            //if nbr is parent node (then just ignore - otherwise if take minimum from parent that doesn't make sense for whole graph)
+            //if nbr is parent node (then just ignore - otherwise if take the minimum from a parent that doesn't make sense for whole graph)
             if(nbr==ignore){
                 continue;
             }
             
             //if neighbour node is unvisited then visit them
             if(low[nbr]==Integer.MAX_VALUE){
-                //parent/ignore node parameter become the current node
+                //parent/ignore node parameter becomes the current node
                 dfs(nbr,adj,node);
             }
             
-            //if there is a back-edge or another short way to reach the node then fill up the value
+            //if there is a back-edge or another short way to reach the node, fill up the value
             low[node]=Math.min(low[nbr],low[node]);
             
-            //if there is no other way to reach this neighbour node that this neighbour node must have the heighter value than the parent timer
+            //if there is no other way to reach this neighbor node this neighbour node (must have a higher value than the parent timer)
             if(low[nbr]>time[node]){
-                //no other way to reach this neighbour node (means this edge is essential to connect graph - from parent vertex to neighbour vertex)
+                //no other way to reach this neighbor node (means this edge is essential to connect the graph - from parent vertex to neighbor vertex)
                 ans.add(Arrays.asList(node,nbr));
             }
         }
