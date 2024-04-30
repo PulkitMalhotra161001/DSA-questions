@@ -64,7 +64,7 @@ class Solution {
             //if there is a back-edge or another short way to reach the node, fill up the value
             low[node]=Math.min(low[nbr],low[node]);
             
-            //if there is no other way to reach this neighbor node this neighbour node (must have a higher value than the parent timer)
+            //if there is no other way to reach this neighbor node (neighbor node must have a higher value than the parent timer)
             if(low[nbr]>time[node]){
                 //no other way to reach this neighbor node (means this edge is essential to connect the graph - from parent vertex to neighbor vertex)
                 ans.add(Arrays.asList(node,nbr));
