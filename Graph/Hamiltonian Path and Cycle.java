@@ -44,7 +44,7 @@ class Solution
         
         /*if we have traversed all vertices
         size if equal to list size
-        -1 is bcz in this case we have 1 index list*/
+        -1 is bcz in this case we have 1 based inding list*/
         if(vis.size()==list.size()-1){
             
             //this is the Hamiltonian Path
