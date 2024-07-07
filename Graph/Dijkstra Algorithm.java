@@ -1,3 +1,5 @@
+// https://www.geeksforgeeks.org/problems/implementing-dijkstra-set-1-adjacency-matrix/1
+
 class Solution
 {
     // we have to find "yaha/is node tak pauchne me kitna distance/wgt lagega"
@@ -102,3 +104,40 @@ class Solution
 
 //this will not work for -ve edge
 //for that we have Bellman–Ford Algorithm
+
+___________________________________________________________________________________________________________________________________________________________________
+
+
+class Solution
+{
+    //Function to find the shortest distance of all the vertices
+    //from the source vertex S.
+    static int[] dijkstra(int n, ArrayList<ArrayList<ArrayList<Integer>>> adj, int S)
+    {
+        boolean vis[]=new boolean[n];
+        int ans[]=new int[n];
+        Arrays.fill(ans,Integer.MAX_VALUE);
+        ans[S]=0;
+        int total=0;
+        int res=0;
+        while(total<n){
+            int min=Integer.MAX_VALUE;
+            int node=-1;
+            for(int i=0;i<n;i++){
+                if(!vis[i] && ans[i]<min){
+                    min=ans[i];
+                    node=i;
+                }
+            }
+            vis[node]=true;
+            total++;
+            res+=min;
+            for(ArrayList<Integer> i:adj.get(node)){
+                if(!vis[i.get(0)]){
+                    ans[i.get(0)]=Math.min(i.get(1)+ans[node],ans[i.get(0)]);
+                }
+            }
+        }
+        return ans;
+    }
+}
