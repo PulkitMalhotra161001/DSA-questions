@@ -18,12 +18,14 @@ class ST{
     
     int st[], a[];
     int n;
+    int lazy[];
     
     ST(int a[],int n){
         // int size = (int)Math.pow(2,n)-1;
         //reason for 4*n
         //https://leetcode.com/problems/range-sum-query-mutable/discuss/1247355/Java-Simple-and-easy-using-Segment-Tree-solution-clean-code-with-comments/980720
         st = new int[4*n];
+        lazy = new int[4*n];
         this.n=n;
         this.a=a;
         construct(n,0,0,n-1);
@@ -42,6 +44,7 @@ class ST{
     
     int getSum(int l,int r){
         return getSum(0,0,n-1,l,r);
+        //return getSumByLazy(0,0,n-1,l,r); => lazy_propogation
     }
     
     //find sum of range (l,r)
@@ -72,6 +75,67 @@ class ST{
         if(id<=mid)  updateOther(id,2*i+1,sl,mid,diff);
         //lies right side
         else updateOther(id,2*i+2,mid+1,sr,diff);
+    }
+
+    //lazy_propogation
+    void rangeUpdate(int l,int r,int x){
+        rangeUpdateByLazy(0,0,n-1,l,r,x);
+    }
+    //update value of every element in the range of [l.....r]
+    void rangeUpdateByLazy(int i,int sl,int sr,int l,int r,int diff){
+        if(lazy[i]!=0){
+            a[i]+=(sr-sl+1)*diff;
+            //not a leaf node
+            if(sl!=sr){
+                lazy[2*i+1]+=lazy[i];
+                lazy[2*i+2]+=lazy[i];
+            }
+            lazy[i]=0;
+        }
+
+        //no overlap
+        if(r<sl || l>sr || sl>sr)    return;
+
+        //complete overlap
+        if(l<=sl && sr<=r){
+            a[i] += (sr-sl+1)*diff;
+            //if this is not a leaf node then lazy propogate value to childs
+            if(low!=high){
+                //not lazy[..] += lazy[i]
+                lazy[2*i+1]+=diff;
+                lazy[2*i+2]+=diff;
+            }
+            return;
+        }
+
+        //partial overlap
+        int mid = (sl+sr)>>1;
+        rangeUpdateByLazy(2*i+1,sl,mid,l,r);
+        rangeUpdateByLazy(2*i+2,mid+1,sr,l,r);
+        a[i] = a[2*i+1] + a[2*i+2];
+    }
+
+    int getSumByLazy(int i,int sl,int sr,int l,int r){
+        if(lazy[i]!=0){
+            a[i] += (sr-sl+1)*lazy[i];
+            if(sl!=sr){
+                lazy[2*i+1]+=lazy[i];
+                lazy[2*i+2]+=lazy[i];
+            }
+            lazy[i]=0;
+        }
+
+        //no overlap
+        if(r<sl || l>sr || sl>sr)    return;
+
+        //complete overlap
+        if(l<=sl && sr<=r){
+            return a[i];
+        }
+
+        //partial overlap
+        int mid = (sl+sr)>>1;
+        return getSumByLazy(2*i+1,sl,mid,l,r) + getSumByLazy(2*i+2,mid+1,sr,l,r);
     }
     
     void print(){
