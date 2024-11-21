@@ -7,6 +7,18 @@
 // https://leetcode.com/problems/count-good-triplets-in-an-array/
 // https://www.youtube.com/watch?v=HZgwNLZg_-Y (Youtube Solution)
 // https://leetcode.com/problems/count-good-triplets-in-an-array/discuss/1784036/Java-Solution-Using-Fenwick-Tree (Code Solution)
+
+/*
+index is divided into power of 2
+the range at a particular index is to first write number into bits and turn off right_most_set_bit then add +1 (range is new_id, cur_i)
+update will affect some nodes/indecies by updating value at current index
+
+step 1 -> update cur_i value then check affected nodes
+to find next nodes
+    -    2's complement
+    -    & with orginal number
+    -    add to original number
+*/
 class Solution {
     public long goodTriplets(int[] nums1, int[] nums2) {
         int n=nums1.length;
@@ -69,6 +81,7 @@ class FenwickTree{
         int ans=0;
         while(i>0){
             ans+=ft[i];
+            //turn off right_most_set_bit
             i-=( i&(-i) );
         }
         return ans;
@@ -79,6 +92,7 @@ class FenwickTree{
         i++;
         while(i<ft.length){
             ft[i]+=x;
+            //update current node then go to next affected node (step 1 in comments)
             i+=( i&(-i) );
         }
     }
