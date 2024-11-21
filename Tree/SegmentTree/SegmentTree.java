@@ -28,10 +28,10 @@ class ST{
         lazy = new int[4*n];
         this.n=n;
         this.a=a;
-        construct(n,0,0,n-1);
+        construct(0,0,n-1);
     }
     
-    int construct(int n,int i,int l,int r){
+    int construct(int i,int l,int r){
         //leaf node
         if(l==r){
             st[i]=a[l];
@@ -39,7 +39,7 @@ class ST{
         }
         int mid = l+(r-l)/2;
         //interior node value will be sum of left and right node value's
-        return st[i] = construct(n,2*i+1,l,mid) + construct(n,2*i+2,mid+1,r);
+        return st[i] = construct(2*i+1,l,mid) + construct(2*i+2,mid+1,r);
     }
     
     int getSum(int l,int r){
@@ -84,7 +84,7 @@ class ST{
     //update value of every element in the range of [l.....r]
     void rangeUpdateByLazy(int i,int sl,int sr,int l,int r,int diff){
         if(lazy[i]!=0){
-            a[i]+=(sr-sl+1)*diff;
+            a[i]+=(sr-sl+1)*lazy[i];
             //not a leaf node
             if(sl!=sr){
                 lazy[2*i+1]+=lazy[i];
@@ -94,12 +94,12 @@ class ST{
         }
 
         //no overlap
-        if(r<sl || l>sr || sl>sr)    return;
+        if(r<sl || l>sr)    return;
 
         //complete overlap
         if(l<=sl && sr<=r){
             a[i] += (sr-sl+1)*diff;
-            //if this is not a leaf node then lazy propogate value to childs
+            //if this is not a leaf node then lazy propagate value to child
             if(low!=high){
                 //not lazy[..] += lazy[i]
                 lazy[2*i+1]+=diff;
@@ -126,7 +126,7 @@ class ST{
         }
 
         //no overlap
-        if(r<sl || l>sr || sl>sr)    return;
+        if(r<sl || l>sr)    return;
 
         //complete overlap
         if(l<=sl && sr<=r){
