@@ -1,5 +1,5 @@
 // https://www.geeksforgeeks.org/problems/search-pattern-z-algorithm--141631/1
-// https://www.youtube.com/watch?v=CpZh4eF8QBw&t=812s
+// https://www.youtube.com/watch?v=CpZh4eF8QBw
 // https://www.geeksforgeeks.org/z-algorithm-linear-time-pattern-searching-algorithm/
 
 class Solution
